@@ -1,0 +1,25 @@
+{
+  "name": "jjw-hangman-cli",
+  "version": "1.0.0",
+  "description": "awesome hangman",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwin4740/hangman-node.git"
+  },
+  "keywords": [
+    "hangman"
+  ],
+  "author": "James J Winkle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jwin4740/hangman-node/issues"
+  },
+  "homepage": "https://github.com/jwin4740/hangman-node#readme",
+  "dependencies": {
+    "inquirer": "^4.0.1"
+  }
+}
