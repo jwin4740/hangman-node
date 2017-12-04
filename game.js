@@ -112,10 +112,11 @@ function checkStatus(round) {
         console.log("YOU LOSE");
         return;
     } else {
+
         let orig = round.originalArr().join(' ');
         let disp = round.displayState.join(' ');
 
-        orig === disp ? changeWinState() : utils.renderDisplay(round);
+        orig === disp ? changeWinState(round) : utils.renderDisplay(round);
         if (!won) {
             guess(round);
         }
@@ -124,8 +125,8 @@ function checkStatus(round) {
 
 }
 
-function changeWinState() {
+function changeWinState(round) {
     won = true;
-  
+    utils.renderDisplay(round)
     console.log("WINNER!!!!!");
 }
