@@ -62,10 +62,13 @@ function guess(round) {
 
 
 function renderBoard(round) {
+    console.log("\n\n");
     console.log(round.clue);
+    console.log("GUESSES LEFT: " + round.guessesLeft);
+    console.log("GUESSES: " + round.guessesAlready.join(', '));
     console.log("\n\n")
     console.log(round.displayState.join(' '));
-    console.log("GUESSES: " + round.guessesAlready.join(', '));
+
     console.log("\n");
     guess(round);
 
@@ -83,9 +86,15 @@ function evaluate(letter, round) {
 
     if (round.guessesAlready.includes(letter)) {
         // round.guessesAlready.push(letter);
-        showWarning(round);
+        utils.showWarning(round, "already guessed", letter);
+        setTimeout(function () {
+            renderBoard(round);
+        }, 1000);
     } else {
         round.guessesAlready.push(letter);
+        round.guessesLeft--;
+
+
 
         round.originalArr().forEach(function (v, index) {
             switch (v) {
@@ -109,9 +118,13 @@ function evaluate(letter, round) {
 
 
 function checkStatus(round) {
-    let orig = round.originalArr().join(' ');
-    let disp = round.displayState.join(' ');
-    orig === disp ? console.log("WINNER") : renderBoard(round);
+    if (round.guessesLeft === 0) {
+        console.log("YOU LOSE");
+    } else {
+        let orig = round.originalArr().join(' ');
+        let disp = round.displayState.join(' ');
+        orig === disp ? console.log("WINNER") : renderBoard(round);
+    }
 
 }
 
