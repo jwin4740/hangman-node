@@ -1,7 +1,7 @@
 const Round = require("./roundConstruct.js");
 const Table = require("tty-table");
 const chalk = require('chalk');
-const cfonts = require('cfonts');
+
 
 let utils = {
     getRand: function (length) {
@@ -14,6 +14,11 @@ let utils = {
                 break;
 
         }
+    },
+
+    renderDisplay: function (round) {
+        this.renderTable(round);
+        this.renderBoard(round);
     },
     renderTable: function (round) {
         let header = [{
@@ -44,7 +49,7 @@ let utils = {
 
         //Example with arrays as rows 
         let rows = [
-            [round.clue, round.guessesLeft, round.guessedAlready],
+            [round.clue, round.guessesLeft, round.guessesAlready],
         ];
 
 
@@ -61,27 +66,30 @@ let utils = {
 
         let str1 = t1.render();
         console.log(str1);
-       
-  
+
+
 
     },
     renderBoard: function (round) {
-        let dis = round.displayState.join(" ");
-   
-      cfonts.say(dis, {
+
+        let cfonts = require('cfonts');
+       
+        cfonts.say(round.displayState.join(" "), {
             font: 'block', //define the font face 
             align: 'left', //define text alignment 
             colors: ['yellow', "magenta"], //define all colors 
             background: 'Black', //define the background color 
             letterSpacing: 0, //define letter spacing 
-            lineHeight: 2, //define the line height 
+            lineHeight: 1, //define the line height 
             space: true, //define if the output text should have empty lines on top and on the bottom 
             maxLength: '0' //define how many character can be on one line 
         });
 
-       
 
-    }
+
+
+
+    },
 
 
 

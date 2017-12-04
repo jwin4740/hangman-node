@@ -7,7 +7,7 @@ const Table = require("tty-table");
 const chalk = require('chalk');
 // let wordArr;
 // let wordProgess = [];
-
+let won = false;
 
 
 
@@ -30,9 +30,9 @@ function play() {
                 guesses = 5;
             }
             let round = new Round(wordArrTest[utils.getRand(leng)], "this is where the clue will be", guesses);
-            utils.renderTable(round);
-            utils.renderBoard(round);
-            // renderBoard(round);
+            utils.renderDisplay(round);
+            guess(round);
+
         });
 }
 
@@ -61,21 +61,7 @@ function guess(round) {
 }
 
 
-function renderBoard(round) {
-    console.log("\n\n");
-    console.log(round.clue);
-    console.log("GUESSES LEFT: " + round.guessesLeft);
-    console.log("GUESSES: " + round.guessesAlready.join(', '));
-    console.log("\n\n")
-    console.log(round.displayState.join(' '));
 
-    console.log("\n");
-
-
-
-    guess(round);
-
-}
 
 
 
@@ -91,8 +77,9 @@ function evaluate(letter, round) {
         // round.guessesAlready.push(letter);
         utils.showWarning(round, "already guessed", letter);
         setTimeout(function () {
-            renderBoard(round);
+            utils.renderDisplay(round);
         }, 1000);
+        guess(round);
     } else {
         round.guessesAlready.push(letter);
         round.guessesLeft--;
@@ -111,7 +98,7 @@ function evaluate(letter, round) {
                     round.displayState[index] = " ";
                     break;
                 default:
-                    round.displayState[index] = "*";
+                    round.displayState[index] = "_";
             }
         });
         checkStatus(round);
@@ -123,10 +110,22 @@ function evaluate(letter, round) {
 function checkStatus(round) {
     if (round.guessesLeft === 0) {
         console.log("YOU LOSE");
+        return;
     } else {
         let orig = round.originalArr().join(' ');
         let disp = round.displayState.join(' ');
-        orig === disp ? console.log("WINNER") : renderBoard(round);
+
+        orig === disp ? changeWinState() : utils.renderDisplay(round);
+        if (!won) {
+            guess(round);
+        }
     }
 
+
+}
+
+function changeWinState() {
+    won = true;
+  
+    console.log("WINNER!!!!!");
 }
