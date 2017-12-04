@@ -61,31 +61,20 @@ let utils = {
 
         let str1 = t1.render();
         console.log(str1);
-        console.log("\n\n");
-        console.log(round.displayState);
-        console.log(chalk.blue.bold.underline(...round.displayState));
+       
+  
 
     },
     renderBoard: function (round) {
-
-        // let letter1 = cfonts.say('H', {
-        //     font: 'simple', //define the font face 
-        //     align: 'left', //define text alignment 
-        //     colors: ['white'], //define all colors 
-        //     background: 'Green', //define the background color 
-        //     letterSpacing: 2, //define letter spacing 
-        //     lineHeight: 1, //define the line height 
-        //     space: true, //define if the output text should have empty lines on top and on the bottom 
-        //     maxLength: '0' //define how many character can be on one line 
-        // });
-
-      cfonts.say('__', {
-            font: 'huge', //define the font face 
+        let dis = round.displayState.join(" ");
+   
+      cfonts.say(dis, {
+            font: 'block', //define the font face 
             align: 'left', //define text alignment 
-            colors: ['magenta'], //define all colors 
-            background: 'Green', //define the background color 
-            letterSpacing: 2, //define letter spacing 
-            lineHeight: 0.1, //define the line height 
+            colors: ['yellow', "magenta"], //define all colors 
+            background: 'Black', //define the background color 
+            letterSpacing: 0, //define letter spacing 
+            lineHeight: 2, //define the line height 
             space: true, //define if the output text should have empty lines on top and on the bottom 
             maxLength: '0' //define how many character can be on one line 
         });

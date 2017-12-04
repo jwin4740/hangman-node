@@ -30,6 +30,7 @@ function play() {
                 guesses = 5;
             }
             let round = new Round(wordArrTest[utils.getRand(leng)], "this is where the clue will be", guesses);
+            utils.renderTable(round);
             utils.renderBoard(round);
             // renderBoard(round);
         });

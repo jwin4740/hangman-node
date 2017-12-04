@@ -4,7 +4,7 @@ function Round(word, clue, guessesLeft) {
     this.guessesLeft = guessesLeft;
     this.guessesAlready = [];
     this.displayState = this.originalArr().map(v => {
-        return v === " " ? " " : "*";
+        return v === " " ? " " : "_";
 
     });
 }
