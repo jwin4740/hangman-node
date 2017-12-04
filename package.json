@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/jwin4740/hangman-node#readme",
   "dependencies": {
-    "inquirer": "^4.0.1"
+    "chalk-animation": "^1.3.0",
+    "inquirer": "^4.0.1",
+    "tty-table": "^2.5.5"
   }
 }

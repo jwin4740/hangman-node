@@ -1,15 +1,12 @@
 const wordArrTest = ["James", "Evgheni", "Caroline", "Faith Hill"];
 let leng = wordArrTest.length;
 const inquirer = require("inquirer");
-const utils = require("./utils.js");
-let Round = require("./roundConstruct.js");
-
+const utils = require("./utils/utils.js");
+const Round = require("./utils/roundConstruct.js");
+const Table = require("tty-table");
+const chalk = require('chalk');
 // let wordArr;
 // let wordProgess = [];
-
-
-
-
 
 
 play();
@@ -31,8 +28,8 @@ function play() {
                 guesses = 5;
             }
             let round = new Round(wordArrTest[utils.getRand(leng)], "this is where the clue will be", guesses);
-
-            renderBoard(round);
+            utils.renderTable(round)
+            // renderBoard(round);
         });
 }
 
@@ -127,11 +124,3 @@ function checkStatus(round) {
     }
 
 }
-
-
-function showWarning(round) {
-
-}
-
-
-// renderBoard(round);
