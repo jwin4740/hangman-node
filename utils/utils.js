@@ -61,6 +61,8 @@ let utils = {
         let str1 = t1.render();
         console.log(str1);
         console.log("\n\n");
+        console.log(round.displayState);
+        console.log(chalk.blue.bold.underline(...round.displayState));
 
     }
 

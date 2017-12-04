@@ -9,6 +9,8 @@ const chalk = require('chalk');
 // let wordProgess = [];
 
 
+
+
 play();
 
 function play() {
@@ -67,6 +69,9 @@ function renderBoard(round) {
     console.log(round.displayState.join(' '));
 
     console.log("\n");
+
+
+
     guess(round);
 
 }
