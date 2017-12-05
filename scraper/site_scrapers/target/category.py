@@ -25,6 +25,8 @@ class TargetCatScraper(base_scraper.BaseScraper):
         self.su.short_timeout()
 
         for n in self.get_categories():
+            print type(n)
+            print type('hello')
             post = self.su.create_category_object(n)
             self.sm.categories.insert_one(post).inserted_id
 
