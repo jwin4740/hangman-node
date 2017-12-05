@@ -34,7 +34,9 @@ class TriviaGridScraper(base_scraper.BaseScraper):
         """)
 
     def click_next(self):
-        self.sm.driver.execute_script("""$($('.pagination').find('.btn')[1]).click()""")
+        self.sm.driver.execute_script("""
+        document.getElementsByClassName('pager-next')[0].children[0].click();
+        """)
         self.su.long_timeout()
 
     def run_scraper(self):
@@ -50,9 +52,9 @@ class TriviaGridScraper(base_scraper.BaseScraper):
             self.insert_links(self.grab_data())
             while self.next_page_disabled() is False:
                 self.click_next()
-                print self.su.get_current_url(self.sm.driver)
+                self.su.short_timeout()
                 self.insert_links(self.grab_data())
-                self.su.long_timeout()
+                self.su.short_timeout()
 
             doc = self.sm.get_next_scrape(self.sm.categories)
             self.sm.update_next_scrape(self.sm.categories, doc)
