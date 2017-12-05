@@ -32,18 +32,19 @@ class ScraperUtils:
         post = {
             "category_url": category_url,
             "category_name": category_name,
+            "scraped": False,
             "date_added": datetime.datetime.utcnow()
 
         }
 
         return post
 
-    def create_job_object(self, url, grid_url):
+    def create_job_object(self, question, answer):
         post = {
-            "url": url,
-            "grid_url": grid_url,
+            "question": question,
+            "answer": answer,
             "date_added": datetime.datetime.utcnow(),
-            "scraped": False
+            "used": False
         }
 
         return post

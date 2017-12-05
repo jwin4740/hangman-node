@@ -1,5 +1,6 @@
 import sys
-import json, ast
+import json
+import ast
 
 sys.path.append('../')
 from scraperlib import base_scraper

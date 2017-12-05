@@ -1,7 +1,0 @@
-When you try to add excess quantity to the cart (10/18/2017)
-
-"We are glad you love this product! Unfortunately inventory is getting low and there are only 99 available for purchase.
-Please select a lower amount and try again."
-
-
-- figure out efficient way for double promotion
