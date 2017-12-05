@@ -1,9 +1,10 @@
 import sys
+
 sys.path.append('../')
 from scraperlib import base_scraper
 
 
-class TargetGridScraper(base_scraper.BaseScraper):
+class TriviaGridScraper(base_scraper.BaseScraper):
 
     def __init__(self):
         base_scraper.BaseScraper.__init__(self)
@@ -61,5 +62,4 @@ class TargetGridScraper(base_scraper.BaseScraper):
         self.sm.driver.quit()
 
 
-TargetGridScraper().run_scraper()
-
+TriviaGridScraper().run_scraper()

@@ -33,12 +33,6 @@ class TriviaCatScraper(base_scraper.BaseScraper):
 
         return cats
 
-    def dumper(obj):
-        try:
-            return obj.toJSON()
-        except:
-            return obj.__dict__
-
     def run_scraper(self):
         self.sm.driver.get('http://trivia.fyi/categories')
         self.su.short_timeout()
