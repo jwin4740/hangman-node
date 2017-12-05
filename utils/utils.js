@@ -52,8 +52,6 @@ let utils = {
             [round.clue, round.guessesLeft, round.guessesAlready],
         ];
 
-
-
         let t1 = Table(header, rows, {
             borderStyle: 1,
             borderColor: "green",
@@ -63,17 +61,11 @@ let utils = {
             color: "white"
 
         });
-
         let str1 = t1.render();
         console.log(str1);
-
-
-
     },
     renderBoard: function (round) {
-
         let cfonts = require('cfonts');
-       
         cfonts.say(round.displayState.join(" "), {
             font: 'block', //define the font face 
             align: 'left', //define text alignment 
@@ -84,16 +76,7 @@ let utils = {
             space: true, //define if the output text should have empty lines on top and on the bottom 
             maxLength: '0' //define how many character can be on one line 
         });
-
-
-
-
-
     },
-
-
-
-
 }
 
 module.exports = utils;

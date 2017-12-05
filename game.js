@@ -9,8 +9,6 @@ const chalk = require('chalk');
 // let wordProgess = [];
 let won = false;
 
-
-
 play();
 
 function play() {
@@ -38,7 +36,6 @@ function play() {
 
 
 function guess(round) {
-
     inquirer
         .prompt([{
             type: "input",
@@ -46,7 +43,6 @@ function guess(round) {
             message: "PLEASE GUESS A LETTER" + "\n"
         }])
         .then(function (val) {
-
             if (val.choice) {
                 // if it is letter 
                 let upper = val.choice.toUpperCase();
@@ -56,23 +52,9 @@ function guess(round) {
                 console.log("see you later");
             }
         });
-
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
 function evaluate(letter, round) {
-
     if (round.guessesAlready.includes(letter)) {
         // round.guessesAlready.push(letter);
         utils.showWarning(round, "already guessed", letter);
@@ -83,9 +65,6 @@ function evaluate(letter, round) {
     } else {
         round.guessesAlready.push(letter);
         round.guessesLeft--;
-
-
-
         round.originalArr().forEach(function (v, index) {
             switch (v) {
                 case round.displayState[index]:
@@ -102,7 +81,6 @@ function evaluate(letter, round) {
             }
         });
         checkStatus(round);
-
     }
 }
 
@@ -112,7 +90,6 @@ function checkStatus(round) {
         console.log("YOU LOSE");
         return;
     } else {
-
         let orig = round.originalArr().join(' ');
         let disp = round.displayState.join(' ');
 
@@ -121,8 +98,6 @@ function checkStatus(round) {
             guess(round);
         }
     }
-
-
 }
 
 function changeWinState(round) {

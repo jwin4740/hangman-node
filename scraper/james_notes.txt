@@ -1,0 +1,24 @@
+https://www.youtube.com/watch?v=95sydbXK_7k
+
+https://blog.geekforbrains.com/why-im-switching-from-python-to-nodejs-1fbc17dc797a
+
+https://blog.geekforbrains.com/after-a-year-of-using-nodejs-in-production-78eecef1f65a
+
+https://medium.com/@rdsubhas/es6-from-callbacks-to-promises-to-generators-87f1c0cd8f2e
+
+https://github.com/lukehoban/es6features
+
+
+# you loaded jQuery on a page that already had jQuery
+https://api.jquery.com/jquery.noconflict/
+
+apt-cache search node
+
+https://www.teamviewer.com/en/download/linux/
+
+
+Suggestions
+- switch window sizes maximize/minimize to mimic user behavior
+
+question
+ how do you set up an error log when running a cron job
