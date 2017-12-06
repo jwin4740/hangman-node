@@ -18,6 +18,11 @@ class ScraperManger:
         doc = collection.find_one({'scraped': False})
         return doc
 
+    def check_duplicate(self, job, document):
+
+        res = job.find_one({'question': document['question']})
+        return res
+
     def update_next_scrape(self, collection, document):
         if document is not None:
             id = collection.update_one({'_id': document['_id']}, {"$set": {"scraped": True}}, False)
@@ -38,5 +43,3 @@ class DriverManager:
             return driver
         else:
             return scraperutils.get_driver()
-
-

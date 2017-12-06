@@ -39,8 +39,9 @@ class ScraperUtils:
 
         return post
 
-    def create_job_object(self, question, answer):
+    def create_job_object(self, question, answer, category):
         post = {
+            "category": category,
             "question": question,
             "answer": answer,
             "date_added": datetime.datetime.utcnow(),
