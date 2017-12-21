@@ -3,6 +3,10 @@ const Table = require("tty-table");
 const chalk = require('chalk');
 
 
+
+
+
+
 let utils = {
     getRand: function (length) {
         return Math.floor(Math.random() * length);

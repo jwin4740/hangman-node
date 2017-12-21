@@ -1,15 +1,37 @@
 const wordArrTest = ["James", "Evgheni", "Caroline", "Faith Hill"];
-let leng = wordArrTest.length;
+
 const inquirer = require("inquirer");
 const utils = require("./utils/utils.js");
 const Round = require("./utils/roundConstruct.js");
 const Table = require("tty-table");
 const chalk = require('chalk');
-// let wordArr;
-// let wordProgess = [];
+const mongojs = require("mongojs");
+let categoryArray = [];
+let curCategoryQuestions;
+
+
+let db = mongojs('trivia2');
+let qCollection = db.collection('questions');
+let cCollection = db.collection('categories');
 let won = false;
 
-play();
+
+cCollection.find(function (err, docs) {
+    docs.forEach((val) => {
+        let temp = val.category_name;
+
+        categoryArray.push(temp);
+        categoryArray.sort();
+
+    });
+    play();
+});
+
+
+
+
+
+
 
 function play() {
     let guesses;
@@ -27,13 +49,28 @@ function play() {
             } else {
                 guesses = 5;
             }
-            let round = new Round(wordArrTest[utils.getRand(leng)], "this is where the clue will be", guesses);
-            utils.renderDisplay(round);
-            guess(round);
+            chooseCategory(guesses)
+
 
         });
 }
 
+function chooseCategory(guesses) {
+
+    inquirer
+        .prompt([{
+            type: "list",
+            name: "categories",
+            choices: categoryArray,
+            message: "Choose your category"
+        }])
+        .then(function (val) {
+            let curCategory = val.categories;
+            getCategoryQuestions(curCategory, guesses);
+
+        });
+
+}
 
 function guess(round) {
     inquirer
@@ -104,4 +141,20 @@ function changeWinState(round) {
     won = true;
     utils.renderDisplay(round)
     console.log("WINNER!!!!!");
+}
+
+function getCategoryQuestions(category, guesses) {
+
+    qCollection.find({
+            category: category
+        },
+        function (error, data) {
+            curCategoryQuestions = data;
+            let leng = curCategoryQuestions.length;
+            let num = utils.getRand(leng);
+            let round = new Round(curCategoryQuestions[num].answer, curCategoryQuestions[num].question, guesses);
+            utils.renderDisplay(round);
+            guess(round);
+        });
+
 }
